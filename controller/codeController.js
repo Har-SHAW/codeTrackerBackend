@@ -1,7 +1,7 @@
 const { exec, execFile } = require('child_process');
 fs = require('fs');
 
-const compiler = "gcc";
+const compiler = "g++";
 const version = "-std=c++11";
 const out = "-o";
 const infile = "code-runner.cpp";
