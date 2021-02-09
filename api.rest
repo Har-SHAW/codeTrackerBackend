@@ -2,3 +2,9 @@ POST http://localhost:3000/runCode
 Content-Type: application/json
 
 {"code":"#include <iostream>\n\nint main() {\n    std::cout << \"Hello World!\";\n    return 0;\n}","input":""}
+
+###
+POST https://codedebugger.herokuapp.com/runCode
+Content-Type: application/json
+
+{"code":"#include <iostream>\n\nint main() {\n    std::cout << \"Hello World!\";\n    return 0;\n}","input":""}
