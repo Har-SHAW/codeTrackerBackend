@@ -9,7 +9,27 @@ const outfile = "code-runner.out";
 const inputFile = "input.txt";
 
 exports.getOutput = (req, res) => {
-    fs.writeFile(infile, req.body.code, function (err) {
+    let str = req.body.code;
+    let it = -1;
+    let line = 1;
+    let i = 0;
+    while(i < str.length){
+        
+        if(str[i] == "\n"){
+            line++;
+        }
+        if(str[i] == ";" && str[i+1] == "\n"){
+            
+            if(it == 0){
+                str = str.substring(0, i+1) + "cout<<"+"\"<"+line+">\""+";" + str.substring(i+1);
+                it--;
+            }else{
+                it++;
+            }
+        }
+        i++;
+    }
+    fs.writeFile(infile, str, function (err) {
         if (err) {
             res.status(500).send({
                 message: "cannot write the file"
